@@ -3,6 +3,6 @@
 Integrantes:
 
     - Huaman Ramirez Ana Cristina
-    - Perez
+    - Perez Sotacuro
     
 */
