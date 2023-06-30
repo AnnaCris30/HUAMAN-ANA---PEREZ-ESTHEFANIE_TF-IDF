@@ -2,7 +2,7 @@
 
 Integrantes:
 
-    -
-    -
-    hola
+    - Huaman Ramirez Ana Cristina
+    - 
+    
 */
