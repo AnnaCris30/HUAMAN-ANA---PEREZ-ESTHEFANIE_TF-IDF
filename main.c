@@ -2,8 +2,8 @@
 
 Integrantes:
 
-    - Huaman Ramirez Ana Cristina
-    - Perez Sotacuro
+    - Huaman Ramirez Ana Cristina           20200179
+    - Perez Sotacuro Esthefanie Gerarda     20200232
     
 */
 #include <stdio.h>
