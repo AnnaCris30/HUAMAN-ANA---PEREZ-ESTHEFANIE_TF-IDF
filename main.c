@@ -10,6 +10,8 @@ Integrantes:
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
+
 #define MAX_WORDS 100
 #define MAX_WORD_LENGTH 50
 
@@ -17,7 +19,6 @@ typedef struct {
     char word[MAX_WORD_LENGTH];
     int count;
 } WordInfo;
-
 
 int main() {
     int numWords = 0;
@@ -59,10 +60,10 @@ int main() {
     // Cierra el archivo
     fclose(file);
 
-    // Imprime las palabras y sus conteos
+    // Calcula la tdif e imprime las palabras y sus conteos
     for (int i = 0; i < numWords; i++) {
-        printf("%s: %d\n", words[i].word, words[i].count);
-	printf("tdif: %d",numWords/words[i].count);
+        double tdif = log((double)numWords / words[i].count);
+        printf("%s: %d (tdif: %.2f)\n", words[i].word, words[i].count, tdif);
     }
 
     return 0;
