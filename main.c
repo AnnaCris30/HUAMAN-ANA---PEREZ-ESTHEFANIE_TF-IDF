@@ -23,6 +23,7 @@ typedef struct {
 int main() {
     int numWords = 0;
     WordInfo words[MAX_WORDS] = {0};
+    int totalDocuments = 0;
 
     // Abre el archivo de texto
     FILE *file = fopen("D:\\test.txt", "r");
@@ -55,6 +56,8 @@ int main() {
         } else {
             words[i].count++;
         }
+
+        totalDocuments++;
     }
 
     // Cierra el archivo
@@ -62,8 +65,10 @@ int main() {
 
     // Calcula la tdif e imprime las palabras y sus conteos
     for (int i = 0; i < numWords; i++) {
-        double tdif = log((double)numWords / words[i].count);
-        printf("%s: %d (tdif: %.2f)\n", words[i].word, words[i].count, tdif);
+        double tf = (double)words[i].count / totalDocuments;
+        double idf = log((double)numWords / (i + 1)); // i + 1 porque los índices empiezan desde 0
+        double tfidf = tf * idf;
+        printf("%s: %d (tf-idf: %.2f)\n", words[i].word, words[i].count, tfidf);
     }
 
     return 0;
