@@ -12,7 +12,7 @@ Integrantes:
 #include <ctype.h>
 #include <math.h>
 
-#define MAX_WORDS 100
+#define MAX_WORDS 1000
 #define MAX_WORD_LENGTH 50
 
 typedef struct {
@@ -24,6 +24,7 @@ int main() {
     int numWords = 0;
     WordInfo words[MAX_WORDS] = {0};
     int totalDocuments = 0;
+
 
     // Abre el archivo de texto
     FILE *file = fopen("D:\\test.txt", "r");
@@ -56,20 +57,32 @@ int main() {
         } else {
             words[i].count++;
         }
-
-        totalDocuments++;
+	totalDocuments++;
     }
 
     // Cierra el archivo
     fclose(file);
 
-    // Calcula la tdif e imprime las palabras y sus conteos
+    // Crea el vector de características
+    double vectorCaracteristicas[MAX_WORDS];
     for (int i = 0; i < numWords; i++) {
         double tf = (double)words[i].count / totalDocuments;
         double idf = log((double)numWords / (i + 1)); // i + 1 porque los índices empiezan desde 0
-        double tfidf = tf * idf;
-        printf("%s: %d (tf-idf: %.2f)\n", words[i].word, words[i].count, tfidf);
+        double tdif;= tf * idf;
+        vectorCaracteristicas[i] = tdif;
     }
+
+    // Imprime las palabras y sus conteos junto con el TDIF
+    for (int i = 0; i < numWords; i++) {
+        printf("%s: %d (tdif: %.2f)\n", words[i].word, words[i].count, vectorCaracteristicas[i]);
+    }
+
+    // Imprime el vector de características
+    printf("\nVector de Características:\n");
+    for (int i = 0; i < numWords; i++) {
+        printf("%.2f ", vectorCaracteristicas[i]);
+    }
+    printf("\n");
 
     return 0;
 }
