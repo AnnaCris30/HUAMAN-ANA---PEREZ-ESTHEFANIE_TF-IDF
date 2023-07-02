@@ -68,7 +68,7 @@ int main() {
     for (int i = 0; i < numWords; i++) {
         double tf = (double)words[i].count / totalDocuments;
         double idf = log((double)numWords / (i + 1)); // i + 1 porque los índices empiezan desde 0
-        double tdif;= tf * idf;
+        double tdif= tf * idf;
         vectorCaracteristicas[i] = tdif;
     }
 
